@@ -1,7 +1,7 @@
 const { Contact } = require("../models/contacts");
 
 const {
-  addSchema,
+  addContactSchema,
   updateFavoriteSchema,
 } = require("../utils/validation/contactValidationSchemas");
 
@@ -24,7 +24,7 @@ const getById = controllerWrapper(async (req, res, next) => {
 });
 
 const addContact = controllerWrapper(async (req, res, next) => {
-  const { error } = addSchema.validate(req.body);
+  const { error } = addContactSchema.validate(req.body);
   if (error) {
     throw new HttpError(400, "missing required name field");
   }
@@ -56,7 +56,7 @@ const updateContact = controllerWrapper(async (req, res, next) => {
 
 const updateStatusContact = controllerWrapper(async (req, res, next) => {
   const { contactId } = req.params;
-  const { error } = addSchema.validate(req.body);
+  const { error } = addContactSchema.validate(req.body);
   if (error) {
     throw new HttpError(400, "missing field favorite");
   }
