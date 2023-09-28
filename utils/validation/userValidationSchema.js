@@ -1,10 +1,10 @@
 const Joi = require("joi");
 
-const addUserSchema = Joi.object({
+const addUserValidationSchema = Joi.object({
   email: Joi.string().required(),
   password: Joi.string().required(),
 });
 
 module.exports = {
-  addUserSchema,
+  addUserValidationSchema,
 };
